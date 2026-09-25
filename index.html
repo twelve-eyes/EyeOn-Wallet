@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Controle de gastos</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="pagina">
+
+    <header class="topo">
+      <h1>Controle de gastos</h1>
+      <button type="button" id="botao-tema" class="botao-tema" aria-pressed="false">Modo escuro</button>
+    </header>
+
+    <!-- novalidate: a validação é feita por nós, em JavaScript -->
+    <form id="form-gasto" class="form-gasto" novalidate>
+      <div class="campo campo-descricao">
+        <label for="descricao">Descrição</label>
+        <input type="text" id="descricao" placeholder="Ex.: almoço no centro" autocomplete="off">
+      </div>
+
+      <div class="campo">
+        <label for="valor">Valor (R$)</label>
+        <input type="number" id="valor" step="0.01" placeholder="0,00">
+      </div>
+
+      <div class="campo">
+        <label for="categoria">Categoria</label>
+        <select id="categoria">
+          <option value="Alimentação">Alimentação</option>
+          <option value="Transporte">Transporte</option>
+          <option value="Lazer">Lazer</option>
+          <option value="Outros">Outros</option>
+        </select>
+      </div>
+
+      <button type="submit" class="botao-adicionar">Adicionar gasto</button>
+
+      <p id="mensagem-erro" class="mensagem-erro" role="alert"></p>
+    </form>
+
+    <section id="painel-total" class="painel-total" aria-live="polite">
+      <p class="painel-rotulo">Total gasto</p>
+      <p id="total" class="painel-valor">R$ 0,00</p>
+      <p id="contador" class="painel-contador">0 gastos registrados</p>
+    </section>
+
+    <section class="lista-secao">
+      <div class="filtro">
+        <label for="filtro">Mostrar categoria</label>
+        <select id="filtro">
+          <option value="todas">Todas</option>
+          <option value="Alimentação">Alimentação</option>
+          <option value="Transporte">Transporte</option>
+          <option value="Lazer">Lazer</option>
+          <option value="Outros">Outros</option>
+        </select>
+      </div>
+
+      <!-- A <ul> precisa ficar sem espaços dentro para o CSS :empty funcionar -->
+      <ul id="lista-gastos" class="lista-gastos"></ul>
+    </section>
+
+  </main>
+</body>
+</html>

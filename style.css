@@ -1,0 +1,312 @@
+@charset "UTF-8";
+
+/* ============================================================
+   Tokens de cor. O modo escuro só redefine estas variáveis.
+   ============================================================ */
+:root {
+  --fundo: #eceff3;
+  --superficie: #ffffff;
+  --tinta: #1b2333;
+  --tinta-suave: #5a6577;
+  --linha: #d5dbe4;
+  --destaque: #24507a;
+  --destaque-texto: #ffffff;
+  --erro: #b42318;
+  --erro-fundo: #fdeceb;
+}
+
+body.escuro {
+  --fundo: #10151f;
+  --superficie: #1a2130;
+  --tinta: #e6eaf1;
+  --tinta-suave: #9aa5b8;
+  --linha: #2c3648;
+  --destaque: #7fb0e0;
+  --destaque-texto: #10151f;
+  --erro: #ff9a90;
+  --erro-fundo: #3a1d1d;
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--fundo);
+  color: var(--tinta);
+  font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+  line-height: 1.5;
+  transition: background 0.2s, color 0.2s;
+}
+
+.pagina {
+  max-width: 44rem;
+  margin: 0 auto;
+  padding: 2rem 1rem 4rem;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.6rem;
+  letter-spacing: -0.01em;
+}
+
+button,
+input,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--destaque);
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   Topo
+   ============================================================ */
+.topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.botao-tema {
+  padding: 0.4rem 0.9rem;
+  border: 1px solid var(--linha);
+  border-radius: 999px;
+  background: var(--superficie);
+  cursor: pointer;
+}
+
+.botao-tema[aria-pressed="true"] {
+  background: var(--tinta);
+  color: var(--fundo);
+  border-color: var(--tinta);
+}
+
+/* ============================================================
+   Formulário
+   ============================================================ */
+.form-gasto {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr auto;
+  gap: 0.75rem;
+  align-items: end;
+  padding: 1.25rem;
+  background: var(--superficie);
+  border: 1px solid var(--linha);
+  border-radius: 10px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.campo label,
+.filtro label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--tinta-suave);
+}
+
+.campo input,
+.campo select,
+.filtro select {
+  width: 100%;
+  padding: 0.55rem 0.7rem;
+  background: var(--superficie);
+  border: 1px solid var(--linha);
+  border-radius: 6px;
+}
+
+/* Classe ligada e desligada pelo JavaScript na validação */
+.campo input.invalido {
+  border-color: var(--erro);
+  background: var(--erro-fundo);
+}
+
+.botao-adicionar {
+  padding: 0.6rem 1.1rem;
+  border: 0;
+  border-radius: 6px;
+  background: var(--destaque);
+  color: var(--destaque-texto);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.botao-adicionar:hover {
+  filter: brightness(1.1);
+}
+
+.mensagem-erro {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: var(--erro);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.mensagem-erro:empty {
+  display: none;
+}
+
+/* ============================================================
+   Painel do total. A classe de faixa (verde, amarela, vermelha)
+   é escolhida pelo JavaScript; aqui só definimos como cada uma se vê.
+   ============================================================ */
+.painel-total {
+  --faixa: #1d7a4a;
+  --faixa-texto: #ffffff;
+  margin: 1.25rem 0;
+  padding: 1.25rem 1.5rem;
+  background: var(--faixa);
+  color: var(--faixa-texto);
+  border-radius: 10px;
+  transition: background 0.25s;
+}
+
+.painel-total.faixa-verde {
+  --faixa: #1d7a4a;
+  --faixa-texto: #ffffff;
+}
+
+.painel-total.faixa-amarela {
+  --faixa: #f2b632;
+  --faixa-texto: #2a2000;
+}
+
+.painel-total.faixa-vermelha {
+  --faixa: #b42318;
+  --faixa-texto: #ffffff;
+}
+
+.painel-rotulo,
+.painel-contador {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.painel-valor {
+  margin: 0.1rem 0;
+  font-size: 2.6rem;
+  font-weight: 700;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ============================================================
+   Filtro e lista
+   ============================================================ */
+.filtro {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.75rem;
+}
+
+.filtro select {
+  width: auto;
+  min-width: 9rem;
+}
+
+.lista-gastos {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Estado vazio feito só com CSS */
+.lista-gastos:empty::before {
+  content: "Nenhum gasto registrado. Preencha o formulário para começar.";
+  display: block;
+  padding: 1.5rem 0;
+  text-align: center;
+  color: var(--tinta-suave);
+}
+
+.gasto {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+  margin-bottom: 0.5rem;
+  padding: 0.7rem 0.9rem;
+  background: var(--superficie);
+  border: 1px solid var(--linha);
+  border-left: 5px solid var(--linha);
+  border-radius: 8px;
+}
+
+/* A cor da borda vem do atributo data-categoria escrito pelo JavaScript */
+.gasto[data-categoria="Alimentação"] { border-left-color: #d9822b; }
+.gasto[data-categoria="Transporte"]  { border-left-color: #3b7dd8; }
+.gasto[data-categoria="Lazer"]       { border-left-color: #8b5cc7; }
+.gasto[data-categoria="Outros"]      { border-left-color: #6b7688; }
+
+/* Dois seletores de classe para vencer o display:flex de .gasto */
+.gasto.oculto {
+  display: none;
+}
+
+.gasto-descricao {
+  flex: 1 1 12rem;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.gasto-categoria {
+  font-size: 0.8rem;
+  color: var(--tinta-suave);
+}
+
+.gasto-valor {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+.btn-remover {
+  padding: 0.25rem 0.7rem;
+  border: 1px solid var(--linha);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--erro);
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.btn-remover:hover {
+  background: var(--erro-fundo);
+  border-color: var(--erro);
+}
+
+/* ============================================================
+   Telas pequenas
+   ============================================================ */
+@media (max-width: 40rem) {
+  .form-gasto {
+    grid-template-columns: 1fr;
+  }
+
+  .painel-valor {
+    font-size: 2.2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
