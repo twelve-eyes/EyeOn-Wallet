@@ -1,9 +1,10 @@
-//A página não rearrega ao responder o formulário.
+//Declarando variáveis que se referem a IDs HTML
 const form = document.querySelector("#form-gasto");
 const input1 = document.querySelector("#descricao");
 const input2 = document.querySelector("#valor");
 const lista = document.querySelector("#lista-gastos");
 
+//Criando evento para página não recarregar e formatar valor em reais
 form.addEventListener("submit", (evento) => {
     evento.preventDefault();
     const item = document.createElement("li");
@@ -12,20 +13,23 @@ form.addEventListener("submit", (evento) => {
         style: "currency",
         currency: "BRL"
     });
+    //conteúdo dos itens da lista
     item.textContent = input1.value + " - " + vFormat;
 
+    //criando botão de remover
     const botao = document.createElement("button");
     botao.textContent = "Remover";
 
+    //quando clicar no botão remove item da lista
     botao.addEventListener("click", () =>{
         lista.removeChild(item);
     });
 
-    item.appendChild(botao);
-    lista.appendChild(item);
-    
-    input1.value = "";
-    input2.value = "";
+    item.appendChild(botao);//botão é filho do item
+    lista.appendChild(item);//item é filho da lista
+
+    input1.value = ""; //mostra a descricao
+    input2.value = "";//mostra o valor
 });
 
 
