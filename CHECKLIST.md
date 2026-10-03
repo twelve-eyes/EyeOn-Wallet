@@ -6,8 +6,6 @@ Página de controle de gastos pessoais com HTML, CSS e JavaScript puro.
 
 **Avaliação:** 7,0 pontos de funcionalidades + 3,0 pontos de qualidade, com desafio opcional de até +1,0 ponto.
 
-**Status:** os itens estão desmarcados porque esta checklist descreve o escopo; a implementação atual ainda não foi verificada.
-
 ## Feature 1 - Cadastro de gastos (0,8 ponto)
 
 - [ ] Criar formulário com descrição textual, valor numérico e categoria.
