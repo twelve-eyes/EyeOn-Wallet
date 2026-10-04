@@ -8,21 +8,21 @@ Página de controle de gastos pessoais com HTML, CSS e JavaScript puro.
 
 ## Feature 1 - Cadastro de gastos (0,8 ponto)
 
-- [ ] Criar formulário com descrição textual, valor numérico e categoria.
-- [ ] Disponibilizar as categorias: Alimentação, Transporte, Lazer e Outros.
-- [ ] Incluir botão para adicionar o gasto.
-- [ ] Tratar o evento `submit` do formulário.
-- [ ] Usar `preventDefault()` para impedir o recarregamento.
-- [ ] Adicionar o gasto à lista quando os dados forem válidos.
+- [x] Criar formulário com descrição textual, valor numérico e categoria.
+- [x] Disponibilizar as categorias: Alimentação, Transporte, Lazer e Outros.
+- [x] Incluir botão para adicionar o gasto.
+- [x] Tratar o evento `submit` do formulário.
+- [x] Usar `preventDefault()` para impedir o recarregamento.
+- [x] Adicionar o gasto à lista quando os dados forem válidos.
 
 ## Feature 2 - Lista dinâmica de gastos (1,0 ponto)
 
-- [ ] Exibir a lista em uma `<ul>`.
-- [ ] Criar cada gasto como um `<li>` pelo JavaScript.
-- [ ] Mostrar descrição, categoria, valor e botão **Remover** em cada item.
-- [ ] Formatar os valores em reais, como `R$ 1.234,50`.
-- [ ] Usar `createElement`, `textContent` e `appendChild`.
-- [ ] Inserir o texto digitado pelo usuário com `textContent`.
+- [x] Exibir a lista em uma `<ul>`.
+- [x] Criar cada gasto como um `<li>` pelo JavaScript.
+- [x] Mostrar descrição, categoria, valor e botão **Remover** em cada item.
+- [x] Formatar os valores em reais, como `R$ 1.234,50`.
+- [x] Usar `createElement`, `textContent` e `appendChild`.
+- [x] Inserir o texto digitado pelo usuário com `textContent`.
 
 ## Feature 3 - Validação e tratamento do formulário (1,2 ponto)
 
