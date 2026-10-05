@@ -4,6 +4,38 @@ const campoDescricao = document.querySelector("#descricao");
 const campoValor = document.querySelector("#valor");
 const campoCategoria = document.querySelector("#categoria");
 const listaGastos = document.querySelector("#lista-gastos");
+const mensagemErro = document.querySelector("#mensagem-erro");
+
+// Validação dos dados e indicação dos campos que precisam de correção
+function validarGasto(descricao, valor) {
+    const descricaoInvalida = descricao === "";
+    const valorInvalido = !Number.isFinite(valor) || valor <= 0;
+    const mensagens = [];
+
+    campoDescricao.classList.toggle("invalido", descricaoInvalida);
+    campoValor.classList.toggle("invalido", valorInvalido);
+    campoDescricao.setAttribute("aria-invalid", String(descricaoInvalida));
+    campoValor.setAttribute("aria-invalid", String(valorInvalido));
+
+    if (descricaoInvalida) {
+        mensagens.push("Informe uma descrição para o gasto.");
+    }
+
+    if (valorInvalido) {
+        mensagens.push("Informe um valor numérico maior que zero.");
+    }
+
+    // Sem erros, o texto fica vazio e o CSS oculta a mensagem.
+    mensagemErro.textContent = mensagens.join(" ");
+
+    if (descricaoInvalida) {
+        campoDescricao.focus();
+    } else if (valorInvalido) {
+        campoValor.focus();
+    }
+
+    return mensagens.length === 0;
+}
 
 // Formatação dos valores em reais
 function formatarValor(valor) {
@@ -54,13 +86,19 @@ formularioGasto.addEventListener("submit", (evento) => {
     evento.preventDefault();
 
     const descricao = campoDescricao.value.trim();
-    const valor = Number(campoValor.value);
+    // valueAsNumber converte a entrada; um campo vazio resulta em NaN.
+    const valor = campoValor.valueAsNumber;
+
+    if (!validarGasto(descricao, valor)) {
+        return;
+    }
+
     const categoria = campoCategoria.value;
     const item = criarItemGasto(descricao, valor, categoria);
 
     listaGastos.appendChild(item);
 
-    // Limpa os campos de texto e valor para o próximo cadastro.
-    campoDescricao.value = "";
-    campoValor.value = "";
+    // Limpa o formulário somente depois de um cadastro válido.
+    formularioGasto.reset();
+    campoDescricao.focus();
 });
