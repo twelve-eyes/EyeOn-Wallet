@@ -12,15 +12,15 @@ botaoTema.addEventListener("click", () => { // função que será executada quan
 
 // Elementos do formulário e da lista
 const formularioGasto = document.querySelector("#form-gasto");
-const campoDescricao = document.querySelector("#descricao");
-const campoValor = document.querySelector("#valor");
-const campoCategoria = document.querySelector("#categoria");
-const listaGastos = document.querySelector("#lista-gastos");
-const mensagemErro = document.querySelector("#mensagem-erro");
-const selectFiltro = document.querySelector("#filtro");
-const contador = document.querySelector("#contador");
-const elementoTotal = document.querySelector("#total");
-
+const campoDescricao  = document.querySelector("#descricao");
+const campoValor      = document.querySelector("#valor");
+const campoCategoria  = document.querySelector("#categoria");
+const listaGastos     = document.querySelector("#lista-gastos");
+const mensagemErro    = document.querySelector("#mensagem-erro");
+const selectFiltro    = document.querySelector("#filtro");
+const contador        = document.querySelector("#contador");
+const elementoTotal   = document.querySelector("#total");
+const painelTotal     = document.querySelector("#painel-total");
 
 // Validação dos dados e indicação dos campos que precisam de correção
 function validarGasto(descricao, valor) {
@@ -59,6 +59,19 @@ function formatarValor(valor) {
         style: "currency",
         currency: "BRL"
     });
+}
+
+// Cor do total por faixa
+function classificarTotal(total) {
+
+    if (total > 1000) { // condição para classificar o total em faixa-vermelha/amarela/verde.
+        return "faixa-vermelha";
+    } else if (total > 500) {
+        return "faixa-amarela";
+    } else {
+        return "faixa-verde";
+    }
+
 }
 
 // Criação dos elementos de cada gasto
@@ -119,8 +132,8 @@ formularioGasto.addEventListener("submit", (evento) => {
 
     //Filtro ativo para novos gastos.
     const categoriaSelecionada = selectFiltro.value;
-    if(categoriaSelecionada !== "Todas"){
-        if(categoriaSelecionada !== item.dataset.categoria){
+    if (categoriaSelecionada !== "Todas") {
+        if (categoriaSelecionada !== item.dataset.categoria) {
             item.classList.add("oculto");
         }
     }
@@ -152,12 +165,12 @@ selectFiltro.addEventListener("change", () => {
 });
 
 //Função para contar gastos na lista.
-function atualizarContador(){
+function atualizarContador() {
     const total = listaGastos.querySelectorAll(".gasto").length;
-    if(total === 1){
+    if (total === 1) {
         contador.textContent = total + " gasto registrado";
     }
-    else{
+    else {
         contador.textContent = total + " gastos registrados";
     }
 }
@@ -172,6 +185,10 @@ function atualizarTotal() {
     }
 
     elementoTotal.textContent = formatarValor(total);
+    painelTotal.classList.remove("faixa-verde");
+    painelTotal.classList.remove("faixa-amarela");
+    painelTotal.classList.remove("faixa-vermelha");
+    painelTotal.classList.add(classificarTotal(total));
 }
 
 // Mantém o painel consistente com a lista ao carregar a página.
