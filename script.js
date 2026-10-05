@@ -17,6 +17,9 @@ const campoValor = document.querySelector("#valor");
 const campoCategoria = document.querySelector("#categoria");
 const listaGastos = document.querySelector("#lista-gastos");
 const mensagemErro = document.querySelector("#mensagem-erro");
+const selectFiltro = document.querySelector("#filtro");
+const contador = document.querySelector("#contador");
+
 
 // Validação dos dados e indicação dos campos que precisam de correção
 function validarGasto(descricao, valor) {
@@ -83,6 +86,7 @@ function criarItemGasto(descricao, valor, categoria) {
     // Mantém a remoção existente; a delegação será tratada na feature 4.
     botaoRemover.addEventListener("click", () => {
         item.remove();
+        atualizarContador();
     });
 
     item.appendChild(descricaoGasto);
@@ -110,7 +114,45 @@ formularioGasto.addEventListener("submit", (evento) => {
 
     listaGastos.appendChild(item);
 
+    //Filtro ativo para novos gastos.
+    const categoriaSelecionada = selectFiltro.value;
+    if(categoriaSelecionada !== "Todas"){
+        if(categoriaSelecionada !== item.dataset.categoria){
+            item.classList.add("oculto");
+        }
+    }
+
+    //Chamada da função para atualizar contador.
+    atualizarContador();
+
     // Limpa o formulário somente depois de um cadastro válido.
     formularioGasto.reset();
     campoDescricao.focus();
 });
+
+//Filtro por categoria.
+selectFiltro.addEventListener("change", () => {
+    //Guarda o valor selecionado pelo usuário.
+    const categoriaSelecionada = selectFiltro.value;
+
+    //Seleciona todos os itens da lista e percorre o cadastro.
+    listaGastos.querySelectorAll(".gasto").forEach((item) => {
+        const categoriaItem = item.dataset.categoria; //Guarda qual a categoria do item.
+
+        if (categoriaSelecionada === categoriaItem || categoriaSelecionada === "Todas") {
+            item.classList.remove("oculto"); // Mostra a categoria.
+        } else {
+            item.classList.add("oculto"); // Oculta se não foi selecionado.
+        }
+    });
+});
+
+function atualizarContador(){
+    const total = listaGastos.querySelectorAll(".gasto").length;
+    if(total === 1){
+        contador.textContent = total + " gasto registrado";
+    }
+    else{
+        contador.textContent = total + " gastos registrados";
+    }
+}
