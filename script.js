@@ -17,6 +17,10 @@ const campoValor = document.querySelector("#valor");
 const campoCategoria = document.querySelector("#categoria");
 const listaGastos = document.querySelector("#lista-gastos");
 const mensagemErro = document.querySelector("#mensagem-erro");
+const selectFiltro = document.querySelector("#filtro");
+const contador = document.querySelector("#contador");
+const elementoTotal = document.querySelector("#total");
+
 
 // Validação dos dados e indicação dos campos que precisam de correção
 function validarGasto(descricao, valor) {
@@ -62,6 +66,7 @@ function criarItemGasto(descricao, valor, categoria) {
     const item = document.createElement("li");
     item.classList.add("gasto");
     item.dataset.categoria = categoria;
+    item.dataset.valor = valor;
 
     const descricaoGasto = document.createElement("span");
     descricaoGasto.classList.add("gasto-descricao");
@@ -83,6 +88,8 @@ function criarItemGasto(descricao, valor, categoria) {
     // Mantém a remoção existente; a delegação será tratada na feature 4.
     botaoRemover.addEventListener("click", () => {
         item.remove();
+        atualizarContador();
+        atualizarTotal();
     });
 
     item.appendChild(descricaoGasto);
@@ -110,7 +117,63 @@ formularioGasto.addEventListener("submit", (evento) => {
 
     listaGastos.appendChild(item);
 
+    //Filtro ativo para novos gastos.
+    const categoriaSelecionada = selectFiltro.value;
+    if(categoriaSelecionada !== "Todas"){
+        if(categoriaSelecionada !== item.dataset.categoria){
+            item.classList.add("oculto");
+        }
+    }
+
+    // Atualiza o contador e o total, incluindo os gastos ocultos pelo filtro.
+    atualizarContador();
+    atualizarTotal();
+
     // Limpa o formulário somente depois de um cadastro válido.
     formularioGasto.reset();
     campoDescricao.focus();
 });
+
+//Filtro por categoria.
+selectFiltro.addEventListener("change", () => {
+    //Guarda o valor selecionado pelo usuário.
+    const categoriaSelecionada = selectFiltro.value;
+
+    //Seleciona todos os itens da lista e percorre o cadastro.
+    listaGastos.querySelectorAll(".gasto").forEach((item) => {
+        const categoriaItem = item.dataset.categoria; //Guarda qual a categoria do item.
+
+        if (categoriaSelecionada === categoriaItem || categoriaSelecionada === "Todas") {
+            item.classList.remove("oculto"); // Mostra a categoria.
+        } else {
+            item.classList.add("oculto"); // Oculta se não foi selecionado.
+        }
+    });
+});
+
+//Função para contar gastos na lista.
+function atualizarContador(){
+    const total = listaGastos.querySelectorAll(".gasto").length;
+    if(total === 1){
+        contador.textContent = total + " gasto registrado";
+    }
+    else{
+        contador.textContent = total + " gastos registrados";
+    }
+}
+
+// Soma os valores de todos os itens da lista, mesmo quando estão ocultos.
+function atualizarTotal() {
+    const gastos = listaGastos.querySelectorAll(".gasto");
+    let total = 0;
+
+    for (let indice = 0; indice < gastos.length; indice++) {
+        total += Number(gastos[indice].dataset.valor);
+    }
+
+    elementoTotal.textContent = formatarValor(total);
+}
+
+// Mantém o painel consistente com a lista ao carregar a página.
+atualizarContador();
+atualizarTotal();

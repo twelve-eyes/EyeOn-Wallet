@@ -39,19 +39,19 @@ Página de controle de gastos pessoais com HTML, CSS e JavaScript puro.
 
 - [ ] Usar um único listener na `<ul>` para tratar as remoções.
 - [ ] Identificar o botão acionado por meio de `evento.target`.
-- [ ] Remover o item correspondente usando `remove()`.
-- [ ] Garantir o funcionamento nos itens adicionados depois do carregamento.
-- [ ] Atualizar total e contador após cada remoção.
+- [x] Remover o item correspondente usando `remove()`.
+- [x] Garantir o funcionamento nos itens adicionados depois do carregamento.
+- [x] Atualizar total e contador após cada remoção.
 
 ## Feature 5 - Total geral dos gastos (1,0 ponto)
 
-- [ ] Disponibilizar um painel com o total.
-- [ ] Armazenar o valor de cada gasto no atributo `data-valor` do item.
-- [ ] Recalcular o total lendo os itens existentes na página.
-- [ ] Usar um laço `for` para realizar a soma.
-- [ ] Converter os valores lidos dos atributos para número antes de somar.
-- [ ] Recalcular após toda inclusão e remoção.
-- [ ] Considerar todos os gastos, inclusive os ocultos pelo filtro.
+- [x] Disponibilizar um painel com o total.
+- [x] Armazenar o valor de cada gasto no atributo `data-valor` do item.
+- [x] Recalcular o total lendo os itens existentes na página.
+- [x] Usar um laço `for` para realizar a soma.
+- [x] Converter os valores lidos dos atributos para número antes de somar.
+- [x] Recalcular após toda inclusão e remoção.
+- [x] Considerar todos os gastos, inclusive os ocultos pelo filtro.
 
 ## Feature 6 - Cor do total por faixa (0,6 ponto)
 
@@ -64,12 +64,12 @@ Página de controle de gastos pessoais com HTML, CSS e JavaScript puro.
 
 ## Feature 7 - Filtro por categoria (0,7 ponto)
 
-- [ ] Criar um `<select>` com Todas, Alimentação, Transporte, Lazer e Outros.
-- [ ] Tratar a alteração do filtro usando o evento `change`.
-- [ ] Ocultar os gastos de outras categorias por meio de uma classe CSS.
-- [ ] Mostrar todos os gastos ao selecionar **Todas**.
-- [ ] Aplicar o filtro ativo também aos novos gastos cadastrados.
-- [ ] Manter o total geral incluindo os itens ocultos.
+- [x] Criar um `<select>` com Todas, Alimentação, Transporte, Lazer e Outros.
+- [x] Tratar a alteração do filtro usando o evento `change`.
+- [x] Ocultar os gastos de outras categorias por meio de uma classe CSS.
+- [x] Mostrar todos os gastos ao selecionar **Todas**.
+- [x] Aplicar o filtro ativo também aos novos gastos cadastrados.
+- [x] Manter o total geral incluindo os itens ocultos.
 
 ## Feature 8 - Modo escuro (0,3 ponto)
 
@@ -79,10 +79,10 @@ Página de controle de gastos pessoais com HTML, CSS e JavaScript puro.
 
 ## Feature 9 - Contador de gastos (0,4 ponto)
 
-- [ ] Mostrar a quantidade de gastos registrados.
-- [ ] Exibir **“1 gasto registrado”** para um item.
-- [ ] Exibir **“N gastos registrados”** para as demais quantidades, incluindo zero.
-- [ ] Atualizar o contador após cada inclusão e remoção.
+- [x] Mostrar a quantidade de gastos registrados.
+- [x] Exibir **“1 gasto registrado”** para um item.
+- [x] Exibir **“N gastos registrados”** para as demais quantidades, incluindo zero.
+- [x] Atualizar o contador após cada inclusão e remoção.
 
 ## Requisitos técnicos e qualidade (3,0 pontos)
 
