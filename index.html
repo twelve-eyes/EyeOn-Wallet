@@ -19,12 +19,12 @@
     <form id="form-gasto" class="form-gasto" novalidate>
       <div class="campo campo-descricao">
         <label for="descricao">Descrição</label>
-        <input type="text" id="descricao" placeholder="Ex.: almoço no centro" autocomplete="off">
+        <input type="text" id="descricao" placeholder="Ex.: almoço no centro" autocomplete="off" required aria-describedby="mensagem-erro">
       </div>
 
       <div class="campo">
         <label for="valor">Valor (R$)</label>
-        <input type="number" id="valor" step="0.01" placeholder="0,00">
+        <input type="number" id="valor" step="0.01" placeholder="0,00" required aria-describedby="mensagem-erro">
       </div>
 
       <div class="campo">
@@ -44,7 +44,7 @@
 
     <section id="painel-total" class="painel-total" aria-live="polite">
       <p class="painel-rotulo">Total gasto</p>
-      <p id="total" class="painel-valor">R$ 0,00</p>
+      <p>Total <span id="total" class="painel-valor">R$ 0,00</span></p>
       <p id="contador" class="painel-contador">0 gastos registrados</p>
     </section>
 
