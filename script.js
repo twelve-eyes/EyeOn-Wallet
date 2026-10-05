@@ -147,6 +147,7 @@ selectFiltro.addEventListener("change", () => {
     });
 });
 
+//Função para contar gastos na lista.
 function atualizarContador(){
     const total = listaGastos.querySelectorAll(".gasto").length;
     if(total === 1){
