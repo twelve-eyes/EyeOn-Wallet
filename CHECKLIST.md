@@ -73,9 +73,9 @@ Página de controle de gastos pessoais com HTML, CSS e JavaScript puro.
 
 ## Feature 8 - Modo escuro (0,3 ponto)
 
-- [x] Criar um botão para alternar o modo escuro.
-- [x] Alternar uma classe no `<body>` ao clicar.
-- [x] Definir as cores do modo escuro no CSS.
+- [ ] Criar um botão para alternar o modo escuro.
+- [ ] Alternar uma classe no `<body>` ao clicar.
+- [ ] Definir as cores do modo escuro no CSS.
 
 ## Feature 9 - Contador de gastos (0,4 ponto)
 
