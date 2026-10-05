@@ -26,14 +26,14 @@ Página de controle de gastos pessoais com HTML, CSS e JavaScript puro.
 
 ## Feature 3 - Validação e tratamento do formulário (1,2 ponto)
 
-- [ ] Rejeitar descrição vazia ou composta somente por espaços.
-- [ ] Rejeitar valor vazio.
-- [ ] Rejeitar valor igual ou inferior a zero.
-- [ ] Converter o valor digitado para número antes de qualquer cálculo.
-- [ ] Exibir mensagem de erro na própria página, sem `alert`.
-- [ ] Destacar o campo inválido usando uma classe CSS.
-- [ ] Limpar os campos após um cadastro válido.
-- [ ] Ocultar a mensagem de erro após um cadastro válido.
+- [x] Rejeitar descrição vazia ou composta somente por espaços.
+- [x] Rejeitar valor vazio.
+- [x] Rejeitar valor igual ou inferior a zero.
+- [x] Converter o valor digitado para número antes de qualquer cálculo.
+- [x] Exibir mensagem de erro na própria página, sem `alert`.
+- [x] Destacar o campo inválido usando uma classe CSS.
+- [x] Limpar os campos após um cadastro válido.
+- [x] Ocultar a mensagem de erro após um cadastro válido.
 
 ## Feature 4 - Remoção por delegação de eventos (1,0 ponto)
 
