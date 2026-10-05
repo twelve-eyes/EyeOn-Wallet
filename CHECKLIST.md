@@ -55,12 +55,12 @@ Página de controle de gastos pessoais com HTML, CSS e JavaScript puro.
 
 ## Feature 6 - Cor do total por faixa (0,6 ponto)
 
-- [ ] Exibir o total em **verde** quando for até `R$ 500,00`.
-- [ ] Exibir em **amarelo** quando for acima de `R$ 500,00` e até `R$ 1.000,00`.
-- [ ] Exibir em **vermelho** quando ultrapassar `R$ 1.000,00`.
-- [ ] Criar uma função que receba o total como parâmetro e devolva a classificação com `return`.
-- [ ] Definir as cores em classes CSS.
-- [ ] Atualizar a classe conforme o total mudar.
+- [x] Exibir o total em **verde** quando for até `R$ 500,00`.
+- [x] Exibir em **amarelo** quando for acima de `R$ 500,00` e até `R$ 1.000,00`.
+- [x] Exibir em **vermelho** quando ultrapassar `R$ 1.000,00`.
+- [x] Criar uma função que receba o total como parâmetro e devolva a classificação com `return`.
+- [x] Definir as cores em classes CSS.
+- [x] Atualizar a classe conforme o total mudar.
 
 ## Feature 7 - Filtro por categoria (0,7 ponto)
 
