@@ -37,8 +37,8 @@ Página de controle de gastos pessoais com HTML, CSS e JavaScript puro.
 
 ## Feature 4 - Remoção por delegação de eventos (1,0 ponto)
 
-- [ ] Usar um único listener na `<ul>` para tratar as remoções.
-- [ ] Identificar o botão acionado por meio de `evento.target`.
+- [x] Usar um único listener na `<ul>` para tratar as remoções.
+- [x] Identificar o botão acionado por meio de `evento.target`.
 - [x] Remover o item correspondente usando `remove()`.
 - [x] Garantir o funcionamento nos itens adicionados depois do carregamento.
 - [x] Atualizar total e contador após cada remoção.

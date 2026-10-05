@@ -98,13 +98,6 @@ function criarItemGasto(descricao, valor, categoria) {
     botaoRemover.classList.add("btn-remover");
     botaoRemover.textContent = "Remover";
 
-    // Mantém a remoção existente; a delegação será tratada na feature 4.
-    botaoRemover.addEventListener("click", () => {
-        item.remove();
-        atualizarContador();
-        atualizarTotal();
-    });
-
     item.appendChild(descricaoGasto);
     item.appendChild(categoriaGasto);
     item.appendChild(valorGasto);
@@ -112,6 +105,19 @@ function criarItemGasto(descricao, valor, categoria) {
 
     return item;
 }
+
+// Um único listener na lista trata a remoção de todos os gastos.
+listaGastos.addEventListener("click", (evento) => {
+    // Ignora cliques que não foram feitos em um botão Remover.
+    if (!evento.target.classList.contains("btn-remover")) {
+        return;
+    }
+
+    const item = evento.target.closest(".gasto");
+    item.remove();
+    atualizarContador();
+    atualizarTotal();
+});
 
 // Cadastro sem recarregar a página
 formularioGasto.addEventListener("submit", (evento) => {
