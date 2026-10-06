@@ -204,6 +204,11 @@ function atualizarTotaisCategoria() {
     const totalTransporteValor = somarCategorias("Transporte");
     const totalLazerValor = somarCategorias("Lazer");
     const totalOutrosValor = somarCategorias("Outros"); 
+
+    totalAlimentacao.textContent = formatarValor(totalAlimentacaoValor);
+    totalTransporte.textContent = formatarValor(totalTransporteValor);
+    totalLazer.textContent = formatarValor(totalLazerValor);
+    totalOutros.textContent = formatarValor(totalOutrosValor);
 }
 
 
@@ -221,7 +226,8 @@ function atualizarTotal() {
     painelTotal.classList.remove("faixa-amarela");
     painelTotal.classList.remove("faixa-vermelha");
     painelTotal.classList.add(classificarTotal(total));
-    painelTotal.classList.add(classificarTotal(total));
+    
+    atualizarTotaisCategoria();
     
 }
 
