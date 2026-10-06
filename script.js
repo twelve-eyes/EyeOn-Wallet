@@ -11,16 +11,20 @@ botaoTema.addEventListener("click", () => { // função que será executada quan
 });
 
 // Elementos do formulário e da lista
-const formularioGasto = document.querySelector("#form-gasto");
-const campoDescricao  = document.querySelector("#descricao");
-const campoValor      = document.querySelector("#valor");
-const campoCategoria  = document.querySelector("#categoria");
-const listaGastos     = document.querySelector("#lista-gastos");
-const mensagemErro    = document.querySelector("#mensagem-erro");
-const selectFiltro    = document.querySelector("#filtro");
-const contador        = document.querySelector("#contador");
-const elementoTotal   = document.querySelector("#total");
-const painelTotal     = document.querySelector("#painel-total");
+const formularioGasto  = document.querySelector("#form-gasto");
+const campoDescricao   = document.querySelector("#descricao");
+const campoValor       = document.querySelector("#valor");
+const campoCategoria   = document.querySelector("#categoria");
+const listaGastos      = document.querySelector("#lista-gastos");
+const mensagemErro     = document.querySelector("#mensagem-erro");
+const selectFiltro     = document.querySelector("#filtro");
+const contador         = document.querySelector("#contador");
+const elementoTotal    = document.querySelector("#total");
+const painelTotal      = document.querySelector("#painel-total");
+const totalAlimentacao = document.querySelector("#total-alimentacao");
+const totalTransporte  = document.querySelector("#total-transporte");
+const totalLazer       = document.querySelector("#total-lazer");
+const totalOutros      = document.querySelector("#total-outros");
 
 // Validação dos dados e indicação dos campos que precisam de correção
 function validarGasto(descricao, valor) {
@@ -181,6 +185,33 @@ function atualizarContador() {
     }
 }
 
+// Totais por categoria.
+function somarCategorias(categoria) {
+    const gastos = listaGastos.querySelectorAll(".gasto");
+    let soma = 0;
+
+    for (let indice = 0; indice < gastos.length; indice++) { // percorrendo os gastos da página.
+        if (gastos[indice].getAttribute("data-categoria") === categoria) {
+            soma += Number(gastos[indice].getAttribute("data-valor"));
+        }
+    }
+
+    return soma;
+}
+
+function atualizarTotaisCategoria() {
+    const totalAlimentacaoValor = somarCategorias("Alimentação");
+    const totalTransporteValor = somarCategorias("Transporte");
+    const totalLazerValor = somarCategorias("Lazer");
+    const totalOutrosValor = somarCategorias("Outros"); 
+
+    totalAlimentacao.textContent = formatarValor(totalAlimentacaoValor);
+    totalTransporte.textContent = formatarValor(totalTransporteValor);
+    totalLazer.textContent = formatarValor(totalLazerValor);
+    totalOutros.textContent = formatarValor(totalOutrosValor);
+}
+
+
 // Soma os valores de todos os itens da lista, mesmo quando estão ocultos.
 function atualizarTotal() {
     const gastos = listaGastos.querySelectorAll(".gasto");
@@ -195,8 +226,12 @@ function atualizarTotal() {
     painelTotal.classList.remove("faixa-amarela");
     painelTotal.classList.remove("faixa-vermelha");
     painelTotal.classList.add(classificarTotal(total));
+    
+    atualizarTotaisCategoria();
+    
 }
 
 // Mantém o painel consistente com a lista ao carregar a página.
 atualizarContador();
 atualizarTotal();
+atualizarTotaisCategoria();
