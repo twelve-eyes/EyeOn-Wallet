@@ -109,11 +109,11 @@ Estes critérios atravessam todas as features.
 
 - [x] Manter indentação consistente.
 - [x] Usar nomes descritivos para variáveis e funções.
-- [ ] Evitar duplicação de código.
+- [x] Evitar duplicação de código.
 - [x] Organizar o código com comentários por seção.
 - [x] Separar as tarefas em funções.
 
-Pendência observada: a aplicação do filtro se repete no cadastro e no listener de `change`. Na inicialização, `atualizarTotaisCategoria()` também é chamado diretamente depois de `atualizarTotal()`, que já executa essa atualização.
+Correção verificada em 07/10/2026: a função `aplicarFiltro()` é reutilizada no cadastro e no evento `change`. Na inicialização, os subtotais são atualizados uma única vez, por meio de `atualizarTotal()`.
 
 ### Interface e acessibilidade (0,5 ponto)
 

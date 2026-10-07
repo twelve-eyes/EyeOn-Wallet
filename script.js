@@ -140,13 +140,8 @@ formularioGasto.addEventListener("submit", (evento) => {
 
     listaGastos.appendChild(item);
 
-    //Filtro ativo para novos gastos.
-    const categoriaSelecionada = selectFiltro.value;
-    if (categoriaSelecionada !== "Todas") {
-        if (categoriaSelecionada !== item.dataset.categoria) {
-            item.classList.add("oculto");
-        }
-    }
+    // Aplica o filtro ativo também ao gasto recém-cadastrado.
+    aplicarFiltro();
 
     // Atualiza o contador e o total, incluindo os gastos ocultos pelo filtro.
     atualizarContador();
@@ -157,22 +152,19 @@ formularioGasto.addEventListener("submit", (evento) => {
     campoDescricao.focus();
 });
 
-//Filtro por categoria.
-selectFiltro.addEventListener("change", () => {
-    //Guarda o valor selecionado pelo usuário.
+// Aplica a mesma regra de filtro no cadastro e na mudança de categoria.
+function aplicarFiltro() {
     const categoriaSelecionada = selectFiltro.value;
 
-    //Seleciona todos os itens da lista e percorre o cadastro.
     listaGastos.querySelectorAll(".gasto").forEach((item) => {
-        const categoriaItem = item.dataset.categoria; //Guarda qual a categoria do item.
+        const deveOcultar = categoriaSelecionada !== "Todas"
+            && categoriaSelecionada !== item.dataset.categoria;
 
-        if (categoriaSelecionada === categoriaItem || categoriaSelecionada === "Todas") {
-            item.classList.remove("oculto"); // Mostra a categoria.
-        } else {
-            item.classList.add("oculto"); // Oculta se não foi selecionado.
-        }
+        item.classList.toggle("oculto", deveOcultar);
     });
-});
+}
+
+selectFiltro.addEventListener("change", aplicarFiltro);
 
 //Função para contar gastos na lista.
 function atualizarContador() {
@@ -234,4 +226,3 @@ function atualizarTotal() {
 // Mantém o painel consistente com a lista ao carregar a página.
 atualizarContador();
 atualizarTotal();
-atualizarTotaisCategoria();
