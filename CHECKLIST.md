@@ -113,8 +113,6 @@ Estes critérios atravessam todas as features.
 - [x] Organizar o código com comentários por seção.
 - [x] Separar as tarefas em funções.
 
-Correção verificada em 07/10/2026: a função `aplicarFiltro()` é reutilizada no cadastro e no evento `change`. Na inicialização, os subtotais são atualizados uma única vez, por meio de `atualizarTotal()`.
-
 ### Interface e acessibilidade (0,5 ponto)
 
 - [x] Manter a página legível em celular, com aproximadamente `360 px` de largura.
@@ -123,8 +121,6 @@ Correção verificada em 07/10/2026: a função `aplicarFiltro()` é reutilizada
 - [x] Usar hierarquia visual clara e contraste adequado.
 - [x] Garantir foco visível nos elementos interativos.
 - [x] Permitir o uso do formulário apenas com teclado.
-
-Melhoria de acessibilidade identificada: o botão de tema mantém `aria-pressed="false"` mesmo quando o modo escuro está ativo. Sincronizar esse atributo com a classe `escuro` do `<body>`.
 
 ## Feature bônus - Escolher uma opção (até +1,0 ponto)
 
