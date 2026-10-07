@@ -6,6 +6,8 @@ Página de controle de gastos pessoais com HTML, CSS e JavaScript puro.
 
 **Avaliação:** 7,0 pontos de funcionalidades + 3,0 pontos de qualidade, com desafio opcional de até +1,0 ponto.
 
+**Revisão em 06/10/2026:** features 1 a 9 e bônus de totais por categoria verificados no navegador, incluindo cadastro, validação, remoção, filtros, limites de cor, teclado e tela de 360 px.
+
 ## Feature 1 - Cadastro de gastos (0,8 ponto)
 
 - [x] Criar formulário com descrição textual, valor numérico e categoria.
@@ -90,68 +92,74 @@ Estes critérios atravessam todas as features.
 
 ### Restrições técnicas (1,5 ponto)
 
-- [ ] Manter `index.html`, `style.css` e `script.js` separados e na mesma pasta.
-- [ ] Carregar o JavaScript com `<script src="script.js" defer></script>`.
-- [ ] Usar JavaScript puro, sem bibliotecas ou frameworks.
-- [ ] Manter o JavaScript separado do HTML.
-- [ ] Usar `const` por padrão e `let` apenas quando houver reatribuição.
-- [ ] Não usar `var`.
-- [ ] Usar `===` e `!==` nas comparações de igualdade e diferença.
-- [ ] Manter a aparência no CSS e controlar as classes pelo JavaScript com `classList`.
-- [ ] Usar `element.style` somente se houver justificativa em comentário.
-- [ ] Implementar pelo menos duas funções com parâmetros e `return`.
-- [ ] Não usar `innerHTML` com dados digitados pelo usuário.
-- [ ] Para atingir o nível excelente, usar funções pequenas, com um propósito e reaproveitadas.
+- [x] Manter `index.html`, `style.css` e `script.js` separados e na mesma pasta.
+- [x] Carregar o JavaScript com `<script src="script.js" defer></script>`.
+- [x] Usar JavaScript puro, sem bibliotecas ou frameworks.
+- [x] Manter o JavaScript separado do HTML.
+- [x] Usar `const` por padrão e `let` apenas quando houver reatribuição.
+- [x] Não usar `var`.
+- [x] Usar `===` e `!==` nas comparações de igualdade e diferença.
+- [x] Manter a aparência no CSS e controlar as classes pelo JavaScript com `classList`.
+- [x] Usar `element.style` somente se houver justificativa em comentário. Não há uso de `element.style` no código atual.
+- [x] Implementar pelo menos duas funções com parâmetros e `return`.
+- [x] Não usar `innerHTML` com dados digitados pelo usuário.
+- [x] Para atingir o nível excelente, usar funções pequenas, com um propósito e reaproveitadas.
 
 ### Organização e legibilidade (1,0 ponto)
 
-- [ ] Manter indentação consistente.
-- [ ] Usar nomes descritivos para variáveis e funções.
+- [x] Manter indentação consistente.
+- [x] Usar nomes descritivos para variáveis e funções.
 - [ ] Evitar duplicação de código.
-- [ ] Organizar o código com comentários por seção.
-- [ ] Separar as tarefas em funções.
+- [x] Organizar o código com comentários por seção.
+- [x] Separar as tarefas em funções.
+
+Pendência observada: a aplicação do filtro se repete no cadastro e no listener de `change`. Na inicialização, `atualizarTotaisCategoria()` também é chamado diretamente depois de `atualizarTotal()`, que já executa essa atualização.
 
 ### Interface e acessibilidade (0,5 ponto)
 
-- [ ] Manter a página legível em celular, com aproximadamente `360 px` de largura.
-- [ ] Associar os campos aos respectivos `label`.
-- [ ] Exibir os erros na própria página.
-- [ ] Usar hierarquia visual clara e contraste adequado.
-- [ ] Garantir foco visível nos elementos interativos.
-- [ ] Permitir o uso do formulário apenas com teclado.
+- [x] Manter a página legível em celular, com aproximadamente `360 px` de largura.
+- [x] Associar os campos aos respectivos `label`.
+- [x] Exibir os erros na própria página.
+- [x] Usar hierarquia visual clara e contraste adequado.
+- [x] Garantir foco visível nos elementos interativos.
+- [x] Permitir o uso do formulário apenas com teclado.
+
+Melhoria de acessibilidade identificada: o botão de tema mantém `aria-pressed="false"` mesmo quando o modo escuro está ativo. Sincronizar esse atributo com a classe `escuro` do `<body>`.
 
 ## Feature bônus - Escolher uma opção (até +1,0 ponto)
 
 O bônus é opcional; o enunciado pede escolher **um** dos desafios:
 
+**Opção implementada e verificada:** totais por categoria. A persistência é uma alternativa opcional, não necessária para concluir o bônus escolhido.
+
 - [ ] **Persistência:** salvar os gastos em `localStorage` e restaurar a lista após recarregar a página. O enunciado orienta pesquisar esse recurso na documentação da MDN.
-- [ ] **Totais por categoria:** mostrar quanto foi gasto em cada uma das quatro categorias, além do total geral.
+- [x] **Totais por categoria:** mostrar quanto foi gasto em cada uma das quatro categorias, além do total geral.
 
 ## Checklist de testes
 
 Os testes abaixo verificam as regras do enunciado e seus casos-limite:
 
-- [ ] Cadastrar gastos válidos e verificar lista, total e contador.
-- [ ] Tentar cadastrar descrição vazia e descrição somente com espaços.
-- [ ] Tentar cadastrar valor vazio, zero e negativo.
-- [ ] Fazer um cadastro válido após um erro e verificar a limpeza do formulário.
-- [ ] Remover itens, incluindo o último da lista.
-- [ ] Confirmar total zero e contador zero quando a lista ficar vazia.
-- [ ] Verificar as cores nos limites: `500,00`, `500,01`, `1.000,00` e `1.000,01`.
-- [ ] Testar todas as opções do filtro.
-- [ ] Cadastrar gastos com o filtro ativo, tanto da categoria selecionada quanto de outra.
-- [ ] Confirmar que filtrar não altera o total geral.
-- [ ] Alternar entre modo claro e escuro.
-- [ ] Verificar a página em largura de `360 px` e navegar pelo formulário com teclado.
-- [ ] Conferir o console do navegador, com F12, em busca de erros.
-- [ ] Caso implemente o bônus, testar o comportamento escolhido.
+- [x] Cadastrar gastos válidos e verificar lista, total e contador.
+- [x] Tentar cadastrar descrição vazia e descrição somente com espaços.
+- [x] Tentar cadastrar valor vazio, zero e negativo.
+- [x] Fazer um cadastro válido após um erro e verificar a limpeza do formulário.
+- [x] Remover itens, incluindo o último da lista.
+- [x] Confirmar total zero e contador zero quando a lista ficar vazia.
+- [x] Verificar as cores nos limites: `500,00`, `500,01`, `1.000,00` e `1.000,01`.
+- [x] Testar todas as opções do filtro.
+- [x] Cadastrar gastos com o filtro ativo, tanto da categoria selecionada quanto de outra.
+- [x] Confirmar que filtrar não altera o total geral.
+- [x] Alternar entre modo claro e escuro.
+- [x] Verificar a página em largura de `360 px` e navegar pelo formulário com teclado.
+- [x] Conferir o console do navegador, com F12, em busca de erros. Console e exceções conferidos por automação do navegador; nenhum erro da aplicação foi registrado nos testes.
+- [x] Caso implemente o bônus, testar o comportamento escolhido.
 
 ## Checklist de entrega
 
 - [ ] Realizar o trabalho individualmente ou em dupla.
 - [ ] Inserir os nomes de todos os integrantes em comentário no topo de `script.js`.
-- [ ] Reunir os três arquivos em uma única pasta.
-- [ ] Testar a página no navegador antes de compactar.
+- [x] Reunir os três arquivos em uma única pasta.
+- [x] Testar a página no navegador antes de compactar.
 - [ ] Gerar `AP02_NOMEDADUPLA_DATA.zip`.
 - [ ] Usar os nomes dos integrantes sem espaços e sem acentos no nome do ZIP.
 - [ ] Usar a data da entrega no formato `DD-MM`.
