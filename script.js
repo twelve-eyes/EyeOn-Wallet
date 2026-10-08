@@ -1,3 +1,7 @@
+//Nomes:    Allan Carneiro da Cunha Silveira,
+//          Isadora Voss Brugnera,
+//          Jenifer Beatriz Nunes Ribeiro.
+
 const botaoTema = document.getElementById("botao-tema");
 
 botaoTema.addEventListener("click", () => { // função que será executada quando der o clique.
